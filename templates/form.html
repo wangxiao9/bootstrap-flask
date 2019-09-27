@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/form.html' import render_form,render_field,render_form_row %}
+
+{% block content %}
+    <h1>1.render_form(example)</h1>
+    {{ render_form(form) }}
+
+    <h1>2.render_field(example)</h1>
+    <form method="post">
+        {{ form.csrf_token }}
+        {{ render_field(form.username) }}
+        {{ render_field(form.password) }}
+        {{ render_field(form.remember) }}
+        {{ render_field(form.submit) }}
+    </form>
+
+    <h1>3.render_form_row(example)</h1>
+    <form method="post">
+        {{ form.csrf_token }}
+        {{ render_form_row([form.username,form.password],col_map={'username':'col-md-6','password':'col-md-4'}) }}
+        {{ render_form_row([form.username,form.password],col_map={'username':'col-md-4','password':'col-md-4'}) }}
+        {{ render_form_row([form.username, form.password], col_class_default='col-md-2') }}
+
+        {{ render_form_row([form.remember]) }}
+        {{ render_form_row([form.submit]) }}
+    </form>
+
+{% endblock %}
